@@ -1,0 +1,13 @@
+version: '2.3'
+services:
+  fastapi_poll_app:
+    image: fastapi_poll_app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - CONNECTION_URL=${CONNECTION_URL}
+    environment:
+      - CONNECTION_URL=${CONNECTION_URL}
+    ports: 
+      - 8000:8000
