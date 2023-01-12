@@ -20,3 +20,14 @@ async def save_question(question: Questions):
     question_details.save()
 
     return {'message': 'Question processed successfully'}
+
+@router.post("/question/{question_id}")
+def update_marks(question_id: int, marks: int):
+
+    #update the marks
+    resp = PollQuestion.update_marks(question_id=question_id,
+                                marks=marks)
+    
+    if(resp):
+        return {"message":  "Marks updated successfully"}
+    return {"message":  "Question not found"}
